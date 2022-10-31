@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: mingslife/toolbox:latest,mingslife/toolbox:${{ env.GITHUB_REF_NAME }}
+          tags: mingslife/toolbox:latest,mingslife/toolbox:${{ github.ref_name }}
