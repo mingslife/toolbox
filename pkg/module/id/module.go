@@ -8,6 +8,7 @@ import (
 
 type Module struct {
 	Http *transport.IdHttp `inject:""`
+	Grpc *transport.IdGrpc `inject:""`
 }
 
 func (*Module) Name() string {
@@ -19,7 +20,13 @@ func (*Module) Init() error {
 }
 
 func (m *Module) Register() error {
-	return m.Http.Register()
+	if err := m.Http.Register(); err != nil {
+		return err
+	}
+	if err := m.Grpc.Register(); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (*Module) Unregister() error {
