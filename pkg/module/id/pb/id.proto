@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "github.com/mingslife/toolbox/pkg/module/id/pb";
+
+package id;
+
+service IdService {
+  rpc GenerateSnowflakeId(GenerateSnowflakeIdReq) returns (GenerateSnowflakeIdRsp) {}
+}
+
+message GenerateSnowflakeIdReq {}
+
+message GenerateSnowflakeIdRsp {
+  uint64 code = 1;
+  string message = 2;
+  int64 data = 3;
+}
